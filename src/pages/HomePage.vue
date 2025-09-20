@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <router-view></router-view>
+  <span>SOSAL</span>
 </template>
 
 <style scoped></style>
