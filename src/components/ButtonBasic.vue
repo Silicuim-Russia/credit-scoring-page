@@ -12,7 +12,8 @@ const props = defineProps({
 </script>
 
 <template>
-  <div
+  <button
+    @click="$emit('click')"
     v-if="props.variant === 'primary'"
     class="cursor-pointer px-[24px] py-[16px] bg-black hover:bg-zinc-900 rounded-3xl inline-flex justify-start items-start gap-2.5"
   >
@@ -21,9 +22,10 @@ const props = defineProps({
     >
       {{ props.label }}
     </div>
-  </div>
+  </button>
 
-  <div
+  <button
+    @click="$emit('click')"
     v-if="props.variant === 'outline'"
     class="cursor-pointer px-[24px] py-[16px] bg-white hover:bg-zinc-100 rounded-3xl outline-[1.50px] outline-offset-[-1.50px] outline-black inline-flex justify-start items-start gap-2.5"
   >
@@ -32,5 +34,5 @@ const props = defineProps({
     >
       {{ props.label }}
     </div>
-  </div>
+  </button>
 </template>

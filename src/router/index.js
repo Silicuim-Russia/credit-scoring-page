@@ -1,3 +1,4 @@
+import FormPage from '@/pages/FormPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -5,6 +6,12 @@ const routes = [
   {
     path: '/',
     component: HomePage,
+    name: 'home',
+  },
+  {
+    path: '/form',
+    component: FormPage,
+    name: 'form',
   },
 ]
 

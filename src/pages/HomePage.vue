@@ -4,8 +4,15 @@ import DeveloperCard from '@/components/DeveloperCard.vue'
 import NumberStep from '@/components/NumberStep.vue'
 import ResultBadge from '@/components/ResultBadge.vue'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const isMobile = ref(window.innerWidth <= 400)
+
+const startForm = () => {
+  router.push({ name: 'form' })
+}
 
 const teamMembers = [
   {
@@ -66,7 +73,7 @@ const teamMembers = [
           class="w-full max-w-96 inline-flex justify-center items-start gap-2 flex-wrap content-start"
         >
           <ButtonBasic label="Узнать больше" />
-          <ButtonBasic variant="outline" label="Попробовать" />
+          <ButtonBasic variant="outline" label="Попробовать" @click="startForm" />
         </div>
       </div>
       <!-- Right side illustrations -->
@@ -103,7 +110,7 @@ const teamMembers = [
         class="w-full max-w-96 inline-flex justify-center items-start gap-2 flex-wrap content-start"
       >
         <ButtonBasic label="Узнать больше" />
-        <ButtonBasic variant="outline" label="Попробовать" />
+        <ButtonBasic variant="outline" label="Попробовать" @click="startForm" />
       </div>
     </div>
 
@@ -197,7 +204,7 @@ const teamMembers = [
           </div>
         </div>
 
-        <ButtonBasic label="Попробовать сейчас" />
+        <ButtonBasic label="Попробовать сейчас" @click="startForm" />
       </div>
     </div>
 
