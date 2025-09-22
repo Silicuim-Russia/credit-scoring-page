@@ -1,4 +1,3 @@
-<!-- Badge that show is client safe or not -->
 <script setup>
 const props = defineProps({
   variant: {
@@ -22,16 +21,25 @@ const props = defineProps({
       <div
         class="self-stretch justify-start text-[19px] font-semibold font-['SF_Pro_Display'] leading-[16px]"
       >
-        Надёжный
+        {{ props.variant === 'safe' ? 'Надёжный' : 'Рискованный' }}
       </div>
     </div>
 
     <!-- Icons -->
-    <div class="w-12 h-10 relative">
+    <div v-if="props.variant === 'safe'" class="w-12 h-10 relative">
       <img class="left-[26.50px] top-0 absolute" src="/src/assets/icons/right-green.svg" />
       <img class="left-0 top-0 absolute" src="/src/assets/icons/left-green.svg" />
       <div
         class="left-[18.5px] top-[14.98px] absolute text-center justify-start text-(--accent-green-color) text-2xl font-normal font-['SF_Pro_Rounded'] leading-none"
+      >
+        $
+      </div>
+    </div>
+    <div v-else class="w-12 h-10 relative">
+      <img class="left-[26.50px] top-0 absolute" src="/src/assets/icons/right-red.svg" />
+      <img class="left-0 top-0 absolute" src="/src/assets/icons/left-red.svg" />
+      <div
+        class="left-[18.5px] top-[14.98px] absolute text-center justify-start text-(--accent-red-color) text-2xl font-normal font-['SF_Pro_Rounded'] leading-none"
       >
         $
       </div>

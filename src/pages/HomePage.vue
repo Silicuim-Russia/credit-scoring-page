@@ -1,6 +1,27 @@
 <script setup>
 import ButtonBasic from '@/components/ButtonBasic.vue'
+import DeveloperCard from '@/components/DeveloperCard.vue'
+import NumberStep from '@/components/NumberStep.vue'
 import ResultBadge from '@/components/ResultBadge.vue'
+
+const teamMembers = [
+  {
+    firstName: 'Дмитрий',
+    lastName: 'Кантур',
+    role: 'Frontend, backend',
+    avatarName: 'dima.png',
+    githubLink: 'https://github.com/noobweer',
+    telegramLink: 'https://t.me/noobweer',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Евдокимов',
+    role: 'Data Scientist',
+    avatarName: 'sanya.png',
+    githubLink: 'https://github.com/Alexhoup27',
+    telegramLink: 'https://t.me/houp_27',
+  },
+]
 </script>
 
 <template>
@@ -53,7 +74,80 @@ import ResultBadge from '@/components/ResultBadge.vue'
       </div>
     </div>
 
-    <ResultBadge />
+    <!-- How it works block -->
+    <div class="self-stretch px-4 inline-flex flex-col justify-start items-center gap-4">
+      <span class="text-black text-3xl font-semibold leading-loose">Как это работает</span>
+
+      <!-- Steps -->
+      <div class="self-stretch inline-flex flex-col justify-center items-start gap-2">
+        <!-- Step 1 -->
+        <div class="self-stretch inline-flex justify-start items-center gap-2">
+          <NumberStep :stepValue="1" />
+          <span class="justify-start text-base font-medium font-['SF_Pro_Display'] leading-none"
+            >Заполните форму</span
+          >
+        </div>
+
+        <!-- Step 2 -->
+        <div class="self-stretch inline-flex justify-start items-start gap-2">
+          <NumberStep :stepValue="2" />
+          <span class="justify-start text-base font-medium font-['SF_Pro_Display'] leading-none"
+            >Данные анализируются моделью, обученной на тысячах реальных историй заёмщиков</span
+          >
+        </div>
+
+        <!-- Step 3 -->
+        <div class="self-stretch inline-flex justify-start items-center gap-2">
+          <NumberStep :stepValue="3" />
+          <span class="justify-start text-base font-medium font-['SF_Pro_Display'] leading-none"
+            >Получаете результат</span
+          >
+        </div>
+      </div>
+
+      <div class="inline-flex justify-start items-center gap-4">
+        <ResultBadge variant="safe" />
+        <ResultBadge variant="risky" />
+      </div>
+    </div>
+
+    <!-- Test version block -->
+    <div class="self-stretch px-4 inline-flex flex-col justify-start items-center gap-4">
+      <span class="text-black text-3xl font-semibold leading-loose">Тестовая версия</span>
+
+      <div class="self-stretch inline-flex flex-col justify-start items-center gap-4">
+        <div class="self-stretch inline-flex flex-col justify-start items-center">
+          <div
+            class="justify-start text-base font-medium text-center font-['SF_Pro_Display'] leading-none"
+          >
+            Хотите узнать, насколько вы надёжный заёмщик?
+          </div>
+          <div
+            class="justify-start text-base font-medium text-center font-['SF_Pro_Display'] leading-none"
+          >
+            Заполните форму и получите результат за несколько секунд.
+          </div>
+        </div>
+
+        <ButtonBasic label="Попробовать сейчас" />
+      </div>
+    </div>
+
+    <!-- Our team block -->
+    <div class="self-stretch px-4 inline-flex flex-col justify-start items-center gap-4">
+      <span class="text-black text-3xl font-semibold leading-loose">Наша команда</span>
+
+      <div class="inline-flex justify-start items-start gap-2">
+        <DeveloperCard
+          v-for="teamMember in teamMembers"
+          :key="teamMember.avatarName"
+          :firstName="teamMember.firstName"
+          :lastName="teamMember.lastName"
+          :role="teamMember.role"
+          :avatarName="teamMember.avatarName"
+        />
+      </div>
+    </div>
   </div>
 </template>
 

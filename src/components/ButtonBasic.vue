@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
   <div
     v-if="props.variant === 'primary'"
-    class="px-[24px] py-[16px] bg-black rounded-3xl inline-flex justify-start items-start gap-2.5"
+    class="cursor-pointer px-[24px] py-[16px] bg-black hover:bg-zinc-900 rounded-3xl inline-flex justify-start items-start gap-2.5"
   >
     <div
       class="text-white text-[16px] lg:text-[20px] font-[500] leading-none font-['SF_Pro_Display']"
@@ -25,7 +25,7 @@ const props = defineProps({
 
   <div
     v-if="props.variant === 'outline'"
-    class="px-[24px] py-[16px] bg-white rounded-3xl outline-[1.50px] outline-offset-[-1.50px] outline-black inline-flex justify-start items-start gap-2.5"
+    class="cursor-pointer px-[24px] py-[16px] bg-white hover:bg-zinc-100 rounded-3xl outline-[1.50px] outline-offset-[-1.50px] outline-black inline-flex justify-start items-start gap-2.5"
   >
     <div
       class="text-black text-[16px] lg:text-[20px] font-[500] leading-none font-['SF_Pro_Display']"
