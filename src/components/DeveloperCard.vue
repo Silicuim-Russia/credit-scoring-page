@@ -28,21 +28,23 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="w-56 h-32 p-4 bg-black rounded-3xl inline-flex flex-col justify-between items-start">
+  <div
+    class="min-w-[224px] p-4 bg-black rounded-3xl inline-flex flex-col justify-between items-start gap-2"
+  >
     <div class="self-stretch inline-flex justify-start items-start">
       <div class="flex-1 inline-flex flex-col justify-start items-end gap-2">
         <div
-          class="self-stretch justify-start text-white text-xl font-medium font-['SF_Pro_Display'] leading-tight"
+          class="self-stretch justify-start text-white text-xl font-medium font-['SF_Pro_Display'] leading-tight tracking-[-0.00625rem]"
         >
           {{ props.firstName }} <br />{{ props.lastName }}
         </div>
         <div
-          class="self-stretch justify-start text-white/60 text-xs font-medium font-['SF_Pro_Display'] leading-3"
+          class="self-stretch justify-start text-white/60 text-xs md:text-[16px] font-medium font-['SF_Pro_Display'] leading-3 md:leading-[16px] tracking-[-0.00625rem]"
         >
           {{ props.role }}
         </div>
       </div>
-      <img class="w-10 h-10 rounded-xl" :src="`/avatars/${props.avatarName}`" />
+      <img class="w-[50px] h-[50px] rounded-xl" :src="`/avatars/${props.avatarName}`" />
     </div>
 
     <div class="inline-flex justify-start items-start gap-2">
