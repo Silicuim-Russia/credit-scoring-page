@@ -29,22 +29,22 @@ const props = defineProps({
 
 <template>
   <div
-    class="min-w-[224px] p-4 bg-black rounded-3xl inline-flex flex-col justify-between items-start gap-2"
+    class="w-[224px] h-[150px] p-4 bg-black rounded-3xl inline-flex flex-col justify-between items-start"
   >
     <div class="self-stretch inline-flex justify-start items-start">
-      <div class="flex-1 inline-flex flex-col justify-start items-end gap-2">
+      <div class="flex-1 inline-flex flex-col justify-start items-end gap-1">
         <div
-          class="self-stretch justify-start text-white text-xl font-medium font-['SF_Pro_Display'] leading-tight tracking-[-0.00625rem]"
+          class="self-stretch justify-start text-white text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.01488rem]"
         >
           {{ props.firstName }} <br />{{ props.lastName }}
         </div>
         <div
-          class="self-stretch justify-start text-white/60 text-xs md:text-[16px] font-medium font-['SF_Pro_Display'] leading-3 md:leading-[16px] tracking-[-0.00625rem]"
+          class="self-stretch justify-start text-white/50 text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.01488rem]"
         >
           {{ props.role }}
         </div>
       </div>
-      <img class="w-[50px] h-[50px] rounded-xl" :src="`/avatars/${props.avatarName}`" />
+      <img class="w-[58px] h-[58px] rounded-xl" :src="`/avatars/${props.avatarName}`" />
     </div>
 
     <div class="inline-flex justify-start items-start gap-2">

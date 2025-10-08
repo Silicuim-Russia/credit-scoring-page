@@ -3,12 +3,9 @@ import ButtonBasic from '@/components/ButtonBasic.vue'
 import DeveloperCard from '@/components/DeveloperCard.vue'
 import NumberStep from '@/components/NumberStep.vue'
 import ResultBadge from '@/components/ResultBadge.vue'
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
-const isMobile = ref(window.innerWidth <= 400)
 
 const startForm = () => {
   router.push({ name: 'form' })
@@ -18,7 +15,7 @@ const teamMembers = [
   {
     firstName: 'Дмитрий',
     lastName: 'Кантур',
-    role: 'Frontend, backend',
+    role: 'Fullstack, Design',
     avatarName: 'dima.png',
     githubLink: 'https://github.com/noobweer',
     telegramLink: 'https://t.me/noobweer',
@@ -26,91 +23,62 @@ const teamMembers = [
   {
     firstName: 'Александр',
     lastName: 'Евдокимов',
-    role: 'Data Scientist',
+    role: 'Data Scientist, backend',
     avatarName: 'sanya.png',
     githubLink: 'https://github.com/Alexhoup27',
     telegramLink: 'https://t.me/houp_27',
   },
 ]
+
+const sourcesLinks = [
+  {
+    desc: 'backend repo',
+    url: '',
+  },
+  {
+    desc: 'frontend repo',
+    url: '',
+  },
+  {
+    desc: 'figma design',
+    url: '',
+  },
+  {
+    desc: 'google collab',
+    url: '',
+  },
+]
 </script>
 
 <template>
-  <div class="w-full py-[16px] inline-flex flex-col justify-start items-center gap-8">
-    <!-- Hero section -->
-    <div
-      v-if="!isMobile"
-      class="self-stretch p-4 inline-flex justify-center items-center gap-12 flex-wrap content-center"
-    >
-      <!-- Left side illustrations -->
-      <div class="w-72 h-60 relative">
-        <img
-          class="w-32 h-32 left-[280px] top-[128px] absolute origin-top-left rotate-180 rounded-3xl"
-          src="/illustrations/illust1.jpg"
-        />
-        <img
-          class="w-32 h-32 left-0 top-[112px] absolute rounded-3xl"
-          src="/illustrations/illust2.jpg"
-        />
-      </div>
-      <!-- Hero info -->
-      <div class="max-w-[564px] min-w-64 inline-flex flex-col justify-start items-center gap-4">
-        <!-- Title -->
-        <div class="self-stretch flex flex-col justify-start items-center gap-2">
-          <div
-            class="self-stretch text-center justify-start text-5xl font-['SF_Pro_Display'] font-[600]"
-          >
-            Кредитный скоринг
-          </div>
-          <div
-            class="self-stretch text-center justify-start text-base md:text-[20px] font-medium font-['SF_Pro_Display'] leading-[18px] md:leading-[28px] tracking-[-0.00625rem]"
-          >
-            Узнай, насколько надёжным заёмщиком считают тебя банки
-          </div>
-        </div>
-
-        <!-- Buttons -->
-        <div
-          class="w-full max-w-96 inline-flex justify-center items-start gap-2 flex-wrap content-start"
-        >
-          <ButtonBasic label="Узнать больше" />
-          <ButtonBasic variant="outline" label="Попробовать" @click="startForm" />
-        </div>
-      </div>
-      <!-- Right side illustrations -->
-      <div class="w-72 h-60 relative">
-        <img class="w-32 h-32 left-0 top-0 absolute rounded-3xl" src="/illustrations/illust3.jpg" />
-        <img
-          class="w-32 h-32 left-[152px] top-[112px] absolute rounded-3xl"
-          src="/illustrations/illust4.jpg"
-        />
-      </div>
-    </div>
-
-    <!-- Hero info -->
-    <div
-      v-else
-      class="max-w-[564px] min-w-64 inline-flex flex-col justify-start items-center gap-4"
-    >
-      <!-- Title -->
-      <div class="self-stretch flex flex-col justify-start items-center gap-2">
-        <div
-          class="self-stretch text-center justify-start text-5xl font-['SF_Pro_Display'] font-[600]"
-        >
-          Кредитный скоринг
-        </div>
-        <div
-          class="self-stretch text-center justify-start text-base md:text-[20px] font-medium font-['SF_Pro_Display'] leading-[18px] md:leading-[28px] tracking-[-0.00625rem]"
-        >
-          Узнай, насколько надёжным заёмщиком считают тебя банки
-        </div>
-      </div>
-
-      <!-- Buttons -->
+  <div class="w-full pb-[16px] inline-flex flex-col justify-start items-center gap-8">
+    <!-- Hero block -->
+    <div class="w-full inline-flex justify-center">
       <div
-        class="w-full max-w-96 inline-flex justify-center items-start gap-2 flex-wrap content-start"
+        class="px-4 pt-10 pb-5 inline-flex justify-center items-center gap-12 flex-wrap content-center"
       >
-        <ButtonBasic label="Узнать больше" />
-        <ButtonBasic variant="outline" label="Попробовать" @click="startForm" />
+        <div class="w-full max-w-[550px] inline-flex flex-col justify-start items-center gap-4">
+          <span
+            class="self-stretch text-center justify-start text-black text-5xl font-semibold font-['SF_Pro_Display'] leading-[48px]"
+            >Кредитный скоринг</span
+          >
+          <div class="w-[546px] text-center justify-start tracking-[-0.015rem]">
+            <span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
+              >Проверь, как тебя видят банки: </span
+            ><span
+              class="text-[var(--accent-green-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
+              >надёжный</span
+            ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]">
+              заёмщик или клиент с </span
+            ><span
+              class="text-[var(--accent-red-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
+              >рисками</span
+            ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
+              >? Получи объективную оценку своей кредитоспособности за пару секунд.</span
+            >
+          </div>
+          <ButtonBasic label="Попробовать сейчас" @click="startForm" />
+        </div>
       </div>
     </div>
 
@@ -119,24 +87,22 @@ const teamMembers = [
       <span class="text-black text-3xl font-semibold leading-loose">О проекте</span>
 
       <div
-        class="md:max-w-[600px] self-stretch flex flex-col justify-center items-center gap-4 mx-auto tracking-[-0.00625rem]"
+        class="w-full max-w-[660px] pl-3 pr-1.5 pt-1.5 pb-2 relative rounded inline-flex justify-start items-start gap-2.5 overflow-hidden"
       >
+        <div class="w-[660px] h-16 left-0 top-0 absolute bg-black/10"></div>
+        <div class="w-[3px] h-16 left-0 top-0 absolute bg-black"></div>
         <div
-          class="self-stretch text-center justify-start text-black text-base font-medium md:text-[20px] leading-[18px] md:leading-[28px] font-['SF_Pro_Display']"
+          class="self-stretch justify-start text-black text-base font-normal font-['SF_Pro_Display'] leading-[18px]"
         >
           Мы разработали сервис, который анализирует данные заёмщика с помощью модели машинного
-          обучения
-        </div>
-        <div
-          class="self-stretch text-center justify-start text-base font-medium md:text-[20px] leading-[18px] md:leading-[28px] font-['SF_Pro_Display']"
-        >
-          <span class="text-black">Достаточно заполнить форму, и система покажет прогноз: </span
-          ><span class="text-(--accent-green-color)">надёжный</span
-          ><span class="text-black"> ли вы клиент или есть </span
-          ><span class="text-(--accent-red-color)">риски</span
-          ><span class="text-black"> для банка</span>
+          обучения, чтобы оценить его кредитную надёжность.
         </div>
       </div>
+      <span
+        class="text-center justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.015rem]"
+        >Ссылки на исходный код и остальные ресурсы
+      </span>
+      <div class="inline-flex justify-start items-start gap-2"></div>
     </div>
 
     <!-- How it works block -->
@@ -146,43 +112,41 @@ const teamMembers = [
       <div
         class="self-stretch inline-flex justify-center items-center gap-8 flex-wrap content-center"
       >
+        <ResultBadge variant="safe" />
         <!-- Steps -->
         <div
           class="max-w-[328px] self-stretch flex flex-col justify-center items-center gap-2 mx-auto sm:mx-0"
         >
           <!-- Step 1 -->
-          <div class="self-stretch inline-flex justify-start items-center gap-2">
+          <div class="inline-flex justify-start items-start gap-2">
             <NumberStep :stepValue="1" />
             <span
-              class="justify-start text-base md:text-[20px] font-medium font-['SF_Pro_Display'] leading-none md:leading-[28px] tracking-[-0.00625rem]"
-              >Заполняете форму</span
+              class="justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.015rem]"
+              >Укажите базовую информацию о себе и своём финансовом поведении</span
             >
           </div>
 
           <!-- Step 2 -->
-          <div class="self-stretch inline-flex justify-start items-start gap-2">
+          <div class="inline-flex justify-start items-start gap-2">
             <NumberStep :stepValue="2" />
             <span
-              class="justify-start text-base md:text-[20px] font-medium font-['SF_Pro_Display'] leading-none md:leading-[28px] tracking-[-0.00625rem]"
-              >Данные анализируются моделью, обученной на тысячах реальных историй заёмщиков</span
+              class="justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.015rem]"
+              >Модель машинного обучения сопоставляет ваши данные с тысячами аналогичных
+              случаев</span
             >
           </div>
 
           <!-- Step 3 -->
-          <div class="self-stretch inline-flex justify-start items-center gap-2">
+          <div class="inline-flex justify-start items-start gap-2">
             <NumberStep :stepValue="3" />
             <span
-              class="justify-start text-base md:text-[20px] font-medium font-['SF_Pro_Display'] leading-none md:leading-[28px] tracking-[-0.00625rem]"
-              >Получаете результат</span
+              class="justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.015rem]"
+              >Система выдаёт персональную оценку — вы надёжный заёмщик или рискованный для
+              банка</span
             >
           </div>
         </div>
-
-        <!-- Badges -->
-        <div class="inline-flex justify-start items-center gap-4">
-          <ResultBadge variant="safe" />
-          <ResultBadge variant="risky" />
-        </div>
+        <ResultBadge variant="risky" />
       </div>
     </div>
 
@@ -193,14 +157,14 @@ const teamMembers = [
       <div class="self-stretch inline-flex flex-col justify-start items-center gap-4">
         <div class="self-stretch inline-flex flex-col justify-start items-center gap-2">
           <div
-            class="justify-start text-base md:text-[20px] font-medium text-center font-['SF_Pro_Display'] leading-none md:leading-[28px] tracking-[-0.00625rem]"
+            class="self-stretch text-center justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tacking-[-0.015rem]"
           >
             Хотите узнать, насколько вы надёжный заёмщик?
           </div>
           <div
-            class="justify-start text-base md:text-[20px] font-medium text-center font-['SF_Pro_Display'] leading-none md:leading-[28px] tracking-[-0.00625rem]"
+            class="self-stretch text-center justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tacking-[-0.015rem]"
           >
-            Заполните форму и получите результат за несколько секунд
+            Пройдите тест — это займёт всего пару минут
           </div>
         </div>
 

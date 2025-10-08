@@ -9,10 +9,10 @@ const props = defineProps({
 
 <template>
   <div
-    class="min-w-[32px] min-h-[32px] bg-black rounded-xl inline-flex flex-col justify-center items-center gap-2.5 overflow-hidden"
+    class="min-w-[24px] min-h-[24px] bg-black rounded-lg inline-flex flex-col justify-center items-center gap-2.5 overflow-hidden"
   >
     <div
-      class="justify-start text-white text-[20px] font-semibold font-['SF_Pro_Display'] leading-[28px]"
+      class="justify-start text-white text-base font-medium font-['SF_Pro_Display'] leading-none"
     >
       {{ props.stepValue }}
     </div>
