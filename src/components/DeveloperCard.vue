@@ -51,7 +51,7 @@ const props = defineProps({
       <a
         :href="props.githubLink"
         class="w-8 h-8 bg-white rounded-xl inline-flex justify-center items-center gap-2.5"
-        ><img src="/src/assets/icons/github.svg"
+        ><img src="/src/assets/icons/gh.svg"
       /></a>
 
       <a

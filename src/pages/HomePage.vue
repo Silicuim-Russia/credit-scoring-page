@@ -7,6 +7,8 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
+const isDesktop = window.innerWidth > 640
+
 const startForm = () => {
   router.push({ name: 'form' })
 }
@@ -32,18 +34,22 @@ const teamMembers = [
 
 const sourcesLinks = [
   {
+    icon: 'github',
     desc: 'backend repo',
     url: '',
   },
   {
+    icon: 'github',
     desc: 'frontend repo',
     url: '',
   },
   {
+    icon: 'figma',
     desc: 'figma design',
     url: '',
   },
   {
+    icon: 'collab',
     desc: 'google collab',
     url: '',
   },
@@ -53,32 +59,30 @@ const sourcesLinks = [
 <template>
   <div class="w-full pb-[16px] inline-flex flex-col justify-start items-center gap-8">
     <!-- Hero block -->
-    <div class="w-full inline-flex justify-center">
-      <div
-        class="px-4 pt-10 pb-5 inline-flex justify-center items-center gap-12 flex-wrap content-center"
-      >
-        <div class="w-full max-w-[550px] inline-flex flex-col justify-start items-center gap-4">
-          <span
-            class="self-stretch text-center justify-start text-black text-5xl font-semibold font-['SF_Pro_Display'] leading-[48px]"
-            >Кредитный скоринг</span
+    <div
+      class="w-full px-4 pt-10 pb-5 inline-flex justify-center items-center gap-12 flex-wrap content-center"
+    >
+      <div class="w-full max-w-[550px] inline-flex flex-col justify-start items-center gap-4">
+        <span
+          class="self-stretch text-center justify-start text-black text-5xl font-semibold font-['SF_Pro_Display'] leading-[48px]"
+          >Кредитный скоринг</span
+        >
+        <div class="w-full w-[546px] text-center justify-start tracking-[-0.015rem]">
+          <span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
+            >Проверь, как тебя видят банки: </span
+          ><span
+            class="text-[var(--accent-green-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
+            >надёжный</span
+          ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]">
+            заёмщик или клиент с </span
+          ><span
+            class="text-[var(--accent-red-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
+            >рисками</span
+          ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
+            >? Получи объективную оценку своей кредитоспособности за пару секунд.</span
           >
-          <div class="w-[546px] text-center justify-start tracking-[-0.015rem]">
-            <span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
-              >Проверь, как тебя видят банки: </span
-            ><span
-              class="text-[var(--accent-green-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
-              >надёжный</span
-            ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]">
-              заёмщик или клиент с </span
-            ><span
-              class="text-[var(--accent-red-color)] text-base font-semibold font-['SF_Pro_Display'] leading-[18px]"
-              >рисками</span
-            ><span class="text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px]"
-              >? Получи объективную оценку своей кредитоспособности за пару секунд.</span
-            >
-          </div>
-          <ButtonBasic label="Попробовать сейчас" @click="startForm" />
         </div>
+        <ButtonBasic label="Попробовать сейчас" @click="startForm" />
       </div>
     </div>
 
@@ -102,7 +106,15 @@ const sourcesLinks = [
         class="text-center justify-start text-black text-base font-medium font-['SF_Pro_Display'] leading-[18px] tracking-[-0.015rem]"
         >Ссылки на исходный код и остальные ресурсы
       </span>
-      <div class="inline-flex justify-start items-start gap-2"></div>
+      <div class="inline-flex justify-start items-start gap-2">
+        <a
+          v-for="link in sourcesLinks"
+          :key="link.url"
+          :href="link.url"
+          class="w-8 h-8 bg-black rounded-xl inline-flex justify-center items-center gap-2.5 overflow-hidden"
+          ><img :src="`/src/assets/icons/${link.icon}.svg`" class="w-[24px] h-[24px]"
+        /></a>
+      </div>
     </div>
 
     <!-- How it works block -->
@@ -112,7 +124,7 @@ const sourcesLinks = [
       <div
         class="self-stretch inline-flex justify-center items-center gap-8 flex-wrap content-center"
       >
-        <ResultBadge variant="safe" />
+        <ResultBadge v-if="isDesktop" variant="safe" />
         <!-- Steps -->
         <div
           class="max-w-[328px] self-stretch flex flex-col justify-center items-center gap-2 mx-auto sm:mx-0"
@@ -146,7 +158,7 @@ const sourcesLinks = [
             >
           </div>
         </div>
-        <ResultBadge variant="risky" />
+        <ResultBadge v-if="isDesktop" variant="risky" />
       </div>
     </div>
 
@@ -191,3 +203,5 @@ const sourcesLinks = [
     </div>
   </div>
 </template>
+
+<style scoped></style>
