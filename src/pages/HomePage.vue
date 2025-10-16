@@ -124,7 +124,7 @@ const sourcesLinks = [
       <div
         class="self-stretch inline-flex justify-center items-center gap-8 flex-wrap content-center"
       >
-        <ResultBadge v-if="isDesktop" variant="safe" />
+        <ResultBadge v-if="isDesktop" variant="safe" size="small" />
         <!-- Steps -->
         <div
           class="max-w-[328px] self-stretch flex flex-col justify-center items-center gap-2 mx-auto sm:mx-0"
@@ -158,7 +158,7 @@ const sourcesLinks = [
             >
           </div>
         </div>
-        <ResultBadge v-if="isDesktop" variant="risky" />
+        <ResultBadge v-if="isDesktop" variant="risky" size="small" />
       </div>
     </div>
 

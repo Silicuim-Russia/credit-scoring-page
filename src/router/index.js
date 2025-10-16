@@ -1,5 +1,6 @@
 import FormPage from '@/pages/FormPage.vue'
 import HomePage from '@/pages/HomePage.vue'
+import ResultPage from '@/pages/ResultPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
@@ -12,6 +13,11 @@ const routes = [
     path: '/form',
     component: FormPage,
     name: 'form',
+  },
+  {
+    path: '/result',
+    component: ResultPage,
+    name: 'result',
   },
 ]
 

@@ -1,6 +1,8 @@
 <script setup>
 import ButtonBasic from '@/components/ButtonBasic.vue'
-import { ref } from 'vue'
+import ResultBadge from '@/components/ResultBadge.vue'
+import axios from 'axios'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -101,11 +103,15 @@ const children = ref(0)
 const daysEmployed = ref(0)
 const yearIncome = ref(0)
 
-const sendDataToAnalyse = () => {
+const isResult = ref(false)
+const result = ref(null)
+const error = ref(null)
+
+const sendDataToAnalyse = async () => {
   const dateToday = new Date()
   const dateBirth = new Date(birthdayDate.value)
 
-  const jsonData = {
+  const data = {
     code_gender: selectedGender.value,
     flag_own_car: selectedOwnCar.value,
     flag_own_realty: selectedOwnRealty.value,
@@ -116,7 +122,7 @@ const sendDataToAnalyse = () => {
     occupation_type: selectedOccupationType.value,
     amt_income_total: yearIncome.value,
     cnt_children: children.value,
-    cnt_family_members: familyMembers.value,
+    cnt_fam_members: familyMembers.value,
     days_birth: -Math.floor((dateToday.getTime() - dateBirth.getTime()) / (1000 * 60 * 60 * 24)),
     days_employed: -Math.floor(daysEmployed.value),
     flag_mobil: 1,
@@ -124,11 +130,37 @@ const sendDataToAnalyse = () => {
     flag_phone: 1,
     flag_email: 1,
   }
+
+  try {
+    isResult.value = true
+    const res = await axios.post('http://localhost:8000/analyse/', data)
+
+    result.value = res.data.result
+  } catch (err) {
+    error.value = err
+    console.error('Error sending data to analyse:', err)
+  }
 }
+
+const badgeVariant = computed(() => {
+  if (result.value === true) return 'safe'
+  if (result.value === false) return 'risky'
+  return 'pending'
+})
 </script>
 
 <template>
-  <div class="w-full h-screen inline-flex justify-center items-start">
+  <div
+    v-if="isResult"
+    class="fixed inset-0 bg-black/70 z-50 flex flex-col gap-[8px] items-center justify-center"
+  >
+    <ResultBadge :variant="badgeVariant" size="medium" />
+    <ButtonBasic label="На главную" />
+  </div>
+  <div
+    :class="isResult ? 'overflow-hidden' : ''"
+    class="w-full h-screen inline-flex justify-center items-start"
+  >
     <div
       class="w-full min-h-full self-stretch max-w-[720px] min-w-64 p-4 inline-flex flex-col justify-start items-center gap-[16px] self-center"
     >
